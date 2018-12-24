@@ -22,6 +22,11 @@ BOARD_VENDOR := motorola-qcom
 
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
+# AIDs and CAPS
+TARGET_FS_CONFIG_GEN := \
+    $(LOCAL_PATH)/fs_config/mot_aids.txt \
+    $(LOCAL_PATH)/fs_config/file_caps.txt
+
 # Assert
 TARGET_OTA_ASSERT_DEVICE := xt1052,ghost,xt1053,ghost_retail,xt1055,ghost_usc,xt1056,ghost_sprint,xt1058,ghost_att,ghost_rcica,xt1060,ghost_verizon
 
@@ -78,7 +83,7 @@ BLUETOOTH_HCI_USE_MCT := true
 USE_DEVICE_SPECIFIC_CAMERA := true
 
 # Classpath
-PRODUCT_BOOT_JARS := $(subst $(space),:,$(PRODUCT_BOOT_JARS))
+#PRODUCT_BOOT_JARS := $(subst $(space),:,$(PRODUCT_BOOT_JARS))
 
 # Display
 BOARD_EGL_CFG := $(LOCAL_PATH)/configs/egl.cfg
@@ -90,8 +95,8 @@ TARGET_USES_ION := true
 USE_OPENGL_RENDERER := true
 
 # Init
-TARGET_INIT_VENDOR_LIB := libinit_msm
-TARGET_LIBINIT_DEFINES_FILE := $(LOCAL_PATH)/init/init_ghost.c
+#TARGET_INIT_VENDOR_LIB := libinit_msm
+#TARGET_LIBINIT_DEFINES_FILE := $(LOCAL_PATH)/init/init_ghost.c
 TARGET_NR_SVC_SUPP_GIDS := 28
 TARGET_UNIFIED_DEVICE := true
 
@@ -114,7 +119,7 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1560281088
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 12884901888
 
 # Power HAL
-TARGET_POWERHAL_VARIANT := cm
+#TARGET_POWERHAL_VARIANT := cm
 
 # Qualcomm support
 COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
@@ -133,55 +138,55 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
 # SELinux
-BOARD_SEPOLICY_DIRS += \
-	$(LOCAL_PATH)/sepolicy
+# BOARD_SEPOLICY_DIRS += \
+# 	$(LOCAL_PATH)/sepolicy
 
-BOARD_SEPOLICY_UNION += \
-	adbd.te \
-	app.te \
-	bluetooth_loader.te \
-	bridge.te \
-	camera.te \
-	device.te \
-	dhcp.te \
-	dnsmasq.te \
-	domain.te \
-	drmserver.te \
-	file_contexts \
-	file.te \
-	hostapd.te \
-	init_shell.te \
-	init.te \
-	libqc-opt.te \
-	mediaserver.te \
-	mpdecision.te \
-	netd.te \
-	netmgrd.te \
-	nfc.te \
-	property_contexts \
-	property.te \
-	qcom.te \
-	qmux.te \
-	radio.te \
-	rild.te \
-	rmt.te \
-	sdcard_internal.te \
-	sdcardd.te \
-	sensors.te \
-	shell.te \
-	surfaceflinger.te \
-	system.te \
-	tee.te \
-	te_macros \
-	thermald.te \
-	ueventd.te \
-	vold.te \
-	wpa_supplicant.te \
-	zygote.te
-
-ifneq ($(TARGET_BUILD_VARIANT),user)
-	BOARD_SEPOLICY_UNION += su.te
-endif
+# BOARD_SEPOLICY_UNION += \
+# 	adbd.te \
+# 	app.te \
+# 	bluetooth_loader.te \
+# 	bridge.te \
+# 	camera.te \
+# 	device.te \
+# 	dhcp.te \
+# 	dnsmasq.te \
+# 	domain.te \
+# 	drmserver.te \
+# 	file_contexts \
+# 	file.te \
+# 	hostapd.te \
+# 	init_shell.te \
+# 	init.te \
+# 	libqc-opt.te \
+# 	mediaserver.te \
+# 	mpdecision.te \
+# 	netd.te \
+# 	netmgrd.te \
+# 	nfc.te \
+# 	property_contexts \
+# 	property.te \
+# 	qcom.te \
+# 	qmux.te \
+# 	radio.te \
+# 	rild.te \
+# 	rmt.te \
+# 	sdcard_internal.te \
+# 	sdcardd.te \
+# 	sensors.te \
+# 	shell.te \
+# 	surfaceflinger.te \
+# 	system.te \
+# 	tee.te \
+# 	te_macros \
+# 	thermald.te \
+# 	ueventd.te \
+# 	vold.te \
+# 	wpa_supplicant.te \
+# 	zygote.te
+#
+# ifneq ($(TARGET_BUILD_VARIANT),user)
+# 	BOARD_SEPOLICY_UNION += su.te
+# endif
 
 # USB
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
